@@ -1,7 +1,6 @@
 #[cfg(test)]
 mod test {
-    use backup_config::*;
-    use confique::Config;
+    use backup_config::prelude::*;
 
     #[test]
     fn test_config() {

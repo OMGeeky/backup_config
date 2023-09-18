@@ -1,5 +1,9 @@
-use confique::Config;
+use prelude::*;
 use serde::{Deserialize, Serialize};
+pub mod prelude {
+    pub use super::Conf;
+    pub use confique::Config;
+}
 
 #[derive(Debug, Serialize, Deserialize, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Config)]
 pub struct Conf {
@@ -52,6 +56,12 @@ pub struct Google {
     /// The project ID for the Google Cloud project
     #[config(default = "twitchbackup-1")]
     pub project_id: String,
+
+    #[config(nested)]
+    pub youtube: Youtube,
+
+    #[config(nested)]
+    pub bigquery: BigQuery,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Config)]
