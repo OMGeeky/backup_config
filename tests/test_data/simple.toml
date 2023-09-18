@@ -1,0 +1,73 @@
+# The Database Connection URL
+#
+# Default value: "sqlite://data.db?mode=rwc"
+#db_url = "sqlite://data.db?mode=rwc"
+
+# The path to the folder where the videos will be downloaded to.
+#
+# Default value: "/var/tmp/twba/videos/"
+#download_folder_path = "/var/tmp/twba/videos/"
+
+# How many videos should be downloaded at the same time.
+#
+# If this number is reached because the uploader can't keep up, the downloader will wait until
+# the number of downloads is below this number again.
+#
+# Set to 0 or leave empty to disable the limit.
+#maximum_downloaded_videos =
+
+[twitch]
+# The client ID for the Twitch API
+#
+# Required! This value must be specified.
+client_id = "YOUR_CLIENT_ID_HERE"
+
+# The client secret for the Twitch API
+#
+# Required! This value must be specified.
+client_secret = "YOUR_CLIENT_SECRET_HERE"
+
+# This is the Client-ID used for downloading videos.
+#
+# Default value: "kimne78kx3ncx6brgo4mv6wki5h1ko"
+#downloader_id = "kimne78kx3ncx6brgo4mv6wki5h1ko"
+
+# The number of threads to use for downloading videos.
+#
+# Default value: 50
+#downloader_thread_count = 50
+
+[google]
+# The path for the auth code file.
+#
+# This file will contain the response of the auth request.
+#
+# The file should be deleted after the auth response is used.
+#
+# Default value: "tmp/twba/auth/code.txt"
+#path_auth_code = "tmp/twba/auth/code.txt"
+
+# The path for the auth cache file for each user. '{user}' will be replaced with the user's login.
+#
+# Default value: "tmp/twba/auth/{user}.txt"
+#path_auth_cache = "tmp/twba/auth/{user}.txt"
+
+# Decides if the auth should go to the localhost or the public IP/Server
+#
+# Default value: false
+#local_auth_redirect = false
+
+# The frequency for reading the auth file in seconds
+#
+# Default value: 10
+#auth_file_read_frequency = 10
+
+# The timeout for reading the auth file in seconds
+#
+# Default value: 86400
+#auth_file_read_timeout = 86400
+
+# The project ID for the Google Cloud project
+#
+# Default value: "twitchbackup-1"
+#project_id = "twitchbackup-1"
