@@ -71,3 +71,55 @@ client_secret = "YOUR_CLIENT_SECRET_HERE"
 #
 # Default value: "twitchbackup-1"
 #project_id = "twitchbackup-1"
+
+[google.youtube]
+# The path to the client secret file for the youtube API
+#
+# Default value: "auth/youtube_client_secret.json"
+#client_secret_path = "auth/youtube_client_secret.json"
+
+# The default tags to use for youtube videos.
+#
+# can be overridden per user
+#
+# Default value: []
+#default_tags = []
+
+# The default description template to use for youtube videos.
+#
+# can be overridden per user
+#
+#
+# Default value: "test description for \"$$video_title$$\""
+#default_description_template = "test description for \"$$video_title$$\""
+
+# The default for the targeted duration (in minutes) a youtube video should be.
+#
+# If the video is longer than the hard cap it will be split so
+# each part except for the last will have the length of the soft cap.
+#
+# can be overridden per user
+#
+# Default value: 300
+#default_video_length_minutes_soft_cap = 300
+
+# The default for the maximum duration (in minutes) a youtube video should be.
+#
+# If the video is longer than this, it will be split into multiple
+# videos (each besides the last the length of the soft cap).
+#
+# can be overridden per user
+#
+# Default value: 359
+#default_video_length_minutes_hard_cap = 359
+
+[google.bigquery]
+# The path to the service account file for the BigQuery API
+#
+# Default value: "auth/bigquery_service_account.json"
+#service_account_path = "auth/bigquery_service_account.json"
+
+# The dataset ID for the BigQuery dataset
+#
+# Default value: "backup_data"
+#dataset_id = "backup_data"

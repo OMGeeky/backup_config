@@ -82,7 +82,7 @@ pub struct Youtube {
     /// The default tags to use for youtube videos.
     ///
     /// can be overridden per user
-    #[config(default = "[]")]
+    #[config(default = [])]
     pub default_tags: Vec<String>,
     /// The default description template to use for youtube videos.
     ///
