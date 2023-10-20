@@ -37,21 +37,21 @@ pub struct Google {
     ///
     /// The file should be deleted after the auth response is used.
     #[config(default = "tmp/twba/auth/code.txt")]
-    path_auth_code: String,
+    pub path_auth_code: String,
     /// The path for the auth cache file for each user. '{user}' will be replaced with the user's login.
     #[config(default = "tmp/twba/auth/{user}.txt")]
-    path_auth_cache: String,
+    pub path_auth_cache: String,
 
     /// Decides if the auth should go to the localhost or the public IP/Server
     #[config(default = false)]
-    local_auth_redirect: bool,
+    pub local_auth_redirect: bool,
 
     /// The frequency for reading the auth file in seconds
     #[config(default = 10)]
-    auth_file_read_frequency: u64,
+    pub auth_file_read_frequency: u64,
     /// The timeout for reading the auth file in seconds
     #[config(default = 86400)] // 24 hours
-    auth_file_read_timeout: u64,
+    pub auth_file_read_timeout: u64,
 
     /// The project ID for the Google Cloud project
     #[config(default = "twitchbackup-1")]
