@@ -46,6 +46,10 @@ pub struct Google {
     #[config(default = false)]
     pub local_auth_redirect: bool,
 
+    /// Decides if the auth-code should be stored in a file or be read by stdin
+    #[config(default = true)]
+    pub use_file_auth_response: bool,
+
     /// The frequency for reading the auth file in seconds
     #[config(default = 10)]
     pub auth_file_read_frequency: u64,

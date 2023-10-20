@@ -57,6 +57,11 @@ client_secret = "YOUR_CLIENT_SECRET_HERE"
 # Default value: false
 #local_auth_redirect = false
 
+# Decides if the auth-code should be stored in a file or be read by stdin
+#
+# Default value: true
+#use_file_auth_response = true
+
 # The frequency for reading the auth file in seconds
 #
 # Default value: 10
