@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod test {
-    use backup_config::prelude::*;
+    use twba_backup_config::prelude::*;
 
     #[test]
     fn test_config() {
