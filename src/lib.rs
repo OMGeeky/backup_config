@@ -127,3 +127,26 @@ pub struct Twitch {
     #[config(default = 50)]
     pub downloader_thread_count: u64,
 }
+
+pub fn get_default_builder() -> confique::Builder<Conf> {
+    #[cfg(feature = "tracing")]
+    tracing::info!("building default config");
+    let conf = Conf::builder();
+    #[cfg(feature = "env")]
+    let conf = conf.env().file(
+        std::env::var("TWBA_CONFIG")
+            .map(|v| {
+                #[cfg(feature = "tracing")]
+                tracing::info!("using '{}' as primary config source after env", v);
+                v
+            })
+            .unwrap_or_else(|_| {
+                #[cfg(feature = "tracing")]
+                tracing::warn!("could not get config location from env");
+                "./settings.toml".to_string()
+            }),
+    );
+    #[cfg(feature = "home")]
+    let conf = conf.file(shellexpand::tilde("~/twba/config.toml").into_owned());
+    conf
+}

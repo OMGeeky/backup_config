@@ -1,10 +1,18 @@
 [package]
 name = "twba-backup-config"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
-confique = { version = "0.2" , features= ["json5","toml"]}
+confique = { version = "0.2", features = ["json5", "toml"] }
+tracing = { version = "0.1", optional = true }
+shellexpand = { version = "3.1", optional = true }
+
+[features]
+default = ["tracing", "env", "home"]
+env = []
+tracing = ["dep:tracing"]
+home = ["dep:shellexpand"]
