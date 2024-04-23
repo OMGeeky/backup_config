@@ -1,5 +1,6 @@
 use prelude::*;
 use serde::{Deserialize, Serialize};
+use std::path::{Path, PathBuf};
 pub mod prelude {
     pub use super::Conf;
     pub use confique::Config;
@@ -10,6 +11,9 @@ pub struct Conf {
     /// The Database Connection URL
     #[config(default = "sqlite://data.db?mode=rwc")]
     pub db_url: String,
+    /// The folder where all the logs will be stored.
+    #[config(default = "/var/tmp/twba/logs/")]
+    pub log_folder: String,
 
     #[config(nested)]
     pub twitch: Twitch,
@@ -29,6 +33,16 @@ pub struct Conf {
     pub maximum_downloaded_videos: Option<u64>,
 }
 
+impl Conf {
+    pub fn log_path(&self) -> PathBuf {
+        #[cfg(feature = "home")]
+        let path = &shellexpand::tilde(&self.log_folder).into_owned();
+
+        #[cfg(not(feature = "home"))]
+        let path = &self.log_folder;
+        PathBuf::from(path)
+    }
+}
 #[derive(Debug, Serialize, Deserialize, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Config)]
 pub struct Google {
     /// The path for the auth code file.
