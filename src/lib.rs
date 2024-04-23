@@ -14,6 +14,11 @@ pub struct Conf {
     /// The folder where all the logs will be stored.
     #[config(default = "/var/tmp/twba/logs/")]
     pub log_folder: String,
+    /// How many items should be processed in a single run.
+    ///
+    /// After this number is reached the program will stop and wait for the next run.
+    #[config(default = 5)]
+    pub max_items_to_process: u64,
 
     #[config(nested)]
     pub twitch: Twitch,
