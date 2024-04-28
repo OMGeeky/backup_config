@@ -21,6 +21,8 @@ pub struct Conf {
     pub max_items_to_process: u64,
 
     #[config(nested)]
+    pub notifier: Notifier,
+    #[config(nested)]
     pub twitch: Twitch,
     #[config(nested)]
     pub google: Google,
@@ -48,6 +50,29 @@ impl Conf {
         PathBuf::from(path)
     }
 }
+
+#[derive(Debug, Serialize, Deserialize, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Config)]
+pub struct Notifier {
+    /// The URL for the webhook
+    pub webhook_url: Option<String>,
+    pub smtp: Option<Smtp>,
+}
+#[derive(Debug, Serialize, Deserialize, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Config)]
+pub struct Smtp {
+    /// The SMTP server address
+    pub server: String,
+    /// The SMTP server port
+    pub port: u16,
+    /// The SMTP username
+    pub username: String,
+    /// The SMTP password
+    pub password: String,
+    /// The email address to send the email from
+    pub from: String,
+    /// The email address to send the email to
+    pub to: String,
+}
+
 #[derive(Debug, Serialize, Deserialize, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Config)]
 pub struct Google {
     /// The path for the auth code file.
