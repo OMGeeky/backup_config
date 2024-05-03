@@ -53,6 +53,8 @@ impl Conf {
 
 #[derive(Debug, Serialize, Deserialize, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, Config)]
 pub struct Notifier {
+    /// The URL where the notifier service is reachable under.
+    pub notifier_url: String,
     /// The URL for the webhook
     pub webhook_url: Option<String>,
     pub smtp: Option<Smtp>,
